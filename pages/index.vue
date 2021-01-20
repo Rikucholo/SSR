@@ -8,13 +8,13 @@
         id="addName"
         placeholder="タスクを入力してください"
       />
-      <button id="addButton" class="button">追加</button>
+      <v-btn elevation="2" id="addButton">すべて</v-btn>
     </div>
     <div class="filter">
-      <button class="button">すべて</button>
-      <button class="button">作業前</button>
-      <button class="button">作業中</button>
-      <button class="button">完了</button>
+      <v-btn elevation="2">すべて</v-btn>
+      <v-btn elevation="2">作業前</v-btn>
+      <v-btn elevation="2">作業中</v-btn>
+      <v-btn elevation="2">完了</v-btn>
     </div>
     <table class="Lists">
       <thead>
