@@ -5,8 +5,9 @@
       hide-details="auto"
       name="addName"
       id="addName"
+      v-model="content"
     ></v-text-field>
-    <v-btn elevation="2" id="addButton">追加</v-btn>
+    <v-btn elevation="2" id="addButton" @click="insert">追加</v-btn>
     <div class="filter">
       <v-btn elevation="2">すべて</v-btn>
       <v-btn elevation="2">作業前</v-btn>
@@ -47,10 +48,19 @@ export default {
   },
   data() {
     return {
+      content: '',
     }
   },
   computed: {
     ...mapState(['todos']),
+  },
+  methods: {
+    insert() {
+      if (this.content !== '') {
+        this.$store.commit('insert', { content: this.content })
+        this.content = ''
+      }
+    },
   },
 }
 </script>
