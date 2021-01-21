@@ -30,7 +30,11 @@
           <td>
             <button class="button button--yet">{{ item.state }}</button>
           </td>
-          <td><button class="button button--delete">削除</button></td>
+          <td>
+            <button class="button button--delete" @click="remove(item)">
+              削除
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -60,6 +64,9 @@ export default {
         this.$store.commit('insert', { content: this.content })
         this.content = ''
       }
+    },
+    remove: function (todo) {
+      this.$store.commit('remove', todo)
     },
   },
 }
