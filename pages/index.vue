@@ -1,15 +1,12 @@
 <template>
   <section clas="container">
-    <h1>Todoリスト</h1>
-    <div class="addArea">
-      <input
-        type="text"
-        name="addName"
-        id="addName"
-        placeholder="タスクを入力してください"
-      />
-      <v-btn elevation="2" id="addButton">すべて</v-btn>
-    </div>
+    <v-text-field
+      label="タスクを入力してください"
+      hide-details="auto"
+      name="addName"
+      id="addName"
+    ></v-text-field>
+    <v-btn elevation="2" id="addButton">追加</v-btn>
     <div class="filter">
       <v-btn elevation="2">すべて</v-btn>
       <v-btn elevation="2">作業前</v-btn>
@@ -26,10 +23,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>テスト</td>
-          <td>2020-04-30 17:00</td>
-          <td><button class="button button--yet">作業前</button></td>
+        <tr v-for="(item, index) in todos" :key="index">
+          <td>{{ item.content }}</td>
+          <td>{{ item.created }}</td>
+          <td>
+            <button class="button button--yet">{{ item.state }}</button>
+          </td>
           <td><button class="button button--delete">削除</button></td>
         </tr>
       </tbody>
@@ -40,11 +39,18 @@
 <script>
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
-
+import { mapState } from 'vuex'
 export default {
   components: {
     Logo,
     VuetifyLogo,
+  },
+  data() {
+    return {
+    }
+  },
+  computed: {
+    ...mapState(['todos']),
   },
 }
 </script>
