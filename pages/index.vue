@@ -28,7 +28,9 @@
           <td>{{ item.content }}</td>
           <td>{{ item.created }}</td>
           <td>
-            <button class="button button--yet">{{ item.state }}</button>
+            <button class="button button--yet" @click="changeState(item)">
+              {{ item.state }}
+            </button>
           </td>
           <td>
             <button class="button button--delete" @click="remove(item)">
@@ -67,6 +69,9 @@ export default {
     },
     remove: function (todo) {
       this.$store.commit('remove', todo)
+    },
+    changeState: function (todo) {
+      this.$store.commit('changeState', todo)
     },
   },
 }
