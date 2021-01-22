@@ -73,6 +73,18 @@ export default {
     changeState: function (todo) {
       this.$store.commit('changeState', todo)
     },
+    asyncData(context) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            title: 'title from asyncData',
+            async_data_time: new Date(),
+          })
+        }, 50000)
+      }).then((res) => {
+        return res
+      })
+    },
   },
 }
 </script>
